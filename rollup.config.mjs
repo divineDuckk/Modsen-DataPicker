@@ -3,12 +3,14 @@ import { cssModules } from 'rollup-plugin-css-modules';
 import external from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import { terser } from 'rollup-plugin-terser';
+import url from 'rollup-plugin-url';
 import { fileURLToPath } from 'url';
 
 import alias from '@rollup/plugin-alias';
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import resolve from '@rollup/plugin-node-resolve';
+import svgr from '@svgr/rollup';
 import typescript from '@rollup/plugin-typescript';
 
 import pkg from './package.json' with { type: 'json' };
@@ -35,6 +37,11 @@ export default {
     alias({
       entries: [{ find: '@src', replacement: path.resolve(__dirname, 'src') }],
     }),
+    url({
+      include: '**/*.svg',
+      limit: 0,
+    }),
+    svgr(),
     postcss({
       modules: true,
       extract: false,

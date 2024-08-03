@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+.headerButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border: 0;
+  transition: 0.2s;
+  padding: 8px;
+  font-weight: 700;
+  font-size: 14px;
+  &:active,
+  &:focus {
+    outline: none;
+  }
+  cursor: pointer;
+  &:hover {
+    background-color: #f1f1f1;
+    border-radius: 8px;
+  }
+}

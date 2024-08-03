@@ -5,11 +5,17 @@ import { CalendarProps } from '@/components/Calendar/types';
 export default {
   title: 'Calendar',
   component: Calendar,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
 } as Meta<typeof Calendar>;
 
 const Template: StoryFn<CalendarProps> = args => <Calendar {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  text: 'Hello world',
+  startYear: 2003,
+  endYear: 2030,
+  weekStartDay: 'monday',
 };

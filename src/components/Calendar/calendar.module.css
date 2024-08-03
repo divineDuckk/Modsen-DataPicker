@@ -1,3 +1,65 @@
-.div {
-  background-color: blueviolet;
+.calendar {
+  position: relative;
+  box-sizing: border-box;
+  width: 250px;
+  padding: 10px;
+  border: 1px solid #e1e1e1;
+  border-radius: 8px;
+  font-family: Arial;
+  .weeks {
+    display: flex;
+    justify-content: center;
+    .week {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: default;
+    }
+  }
+}
+.headerMenu {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex-direction: column;
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 15px;
+    width: 70px;
+    border: 0;
+    background-color: rgb(241, 250, 247);
+    cursor: pointer;
+    transition: 0.2s;
+    border-radius: 5px;
+    &:hover {
+      background-color: rgb(250, 177, 177);
+    }
+  }
+}
+
+.months {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+
+  .activeMonth {
+    background-color: rgb(158, 227, 204);
+  }
+}
+.popupButton {
+  padding: 3px 7px;
+  cursor: pointer;
+  border: 0;
+  transition: 0.3s;
+  border-radius: 5px;
+  &:hover {
+    background-color: aqua;
+  }
 }
