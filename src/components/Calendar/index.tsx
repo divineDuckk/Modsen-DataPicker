@@ -17,6 +17,9 @@ export const Calendar: FC<CalendarProps> = ({
   startYear,
   endYear,
   weekStartDay,
+  withExtraDays,
+  withWeekends,
+  withHolidays,
 }) => {
   const [isHeaderMenuOpen, setIsHeaderMenuOpen] = useState(false);
   const [date, setDate] = useState(getCurrentDate());
@@ -24,7 +27,7 @@ export const Calendar: FC<CalendarProps> = ({
 
   const [currentMonth, currentYear] = date.split(' ');
   const yearsArray = dateRange(startYear, endYear);
-  console.log(getDays(date, weekStartDay));
+  const days = getDays(date, weekStartDay);
   const handleMonthClick = (month: string) => () => {
     setDate(prev => {
       const year = prev.split(' ')[1];
@@ -45,7 +48,6 @@ export const Calendar: FC<CalendarProps> = ({
     });
     setIsPopupOpen(false);
   };
-
   return (
     <div className={styles.calendar} id="calendar">
       {isHeaderMenuOpen ? (
@@ -97,6 +99,19 @@ export const Calendar: FC<CalendarProps> = ({
                     {weekDay}
                   </div>
                 ))}
+          </div>
+          <div className={styles.days}>
+            {days.map(({ day, extraDay, fullDate, isHoliday, isWeekend }) => (
+              <button
+                className={`${!withExtraDays && extraDay && styles.unVisible} 
+                ${extraDay && styles.extraDay} 
+                ${withWeekends && isWeekend && styles.weekend}
+                ${withHolidays && isHoliday && styles.holiday}`}
+                key={fullDate}
+              >
+                {day}
+              </button>
+            ))}
           </div>
         </>
       )}

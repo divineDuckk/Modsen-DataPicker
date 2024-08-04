@@ -1,36 +1,22 @@
 import {
   addDays,
-  addMonths,
   eachDayOfInterval,
   endOfMonth,
   format,
+  getDay,
   parse,
   startOfMonth,
   subDays,
-  subMonths,
 } from 'date-fns';
+import Holidays from 'date-holidays';
+
 import { startDay } from '@/interfaces';
 import { WEEKS_START_WITH_MONDAY, WEEKS_START_WITH_SUNDAY } from '@/constants';
 
-export const getCurrentDate = () => {
-  return format(new Date(), 'MMMM yyyy');
-};
-export const getDateOneMonthAgo = (date: string) => {
-  const parsedDate = parse(date, 'MMMM yyyy', new Date());
-  const oneMonthAgo = subMonths(parsedDate, 1);
-  return format(oneMonthAgo, 'MMMM yyyy');
-};
-export const getDateOneMonthAhead = (date: string) => {
-  const parsedDate = parse(date, 'MMMM yyyy', new Date());
-  const oneMonthAhead = addMonths(parsedDate, 1);
-  return format(oneMonthAhead, 'MMMM yyyy');
-};
-export const dateRange = (start: number, end: number) => {
-  const result = [];
-  for (let i = start; i <= end; i++) {
-    result.push(i);
-  }
-  return result;
+const hd = new Holidays('BY');
+
+const isHoliday = (date: Date): boolean => {
+  return !!hd.isHoliday(date);
 };
 
 const getFirstDayOfWeek = (dateString: string) => {
@@ -61,27 +47,62 @@ const getPosInDays = (weekStartDay: startDay, firstDayAtWeek: string) => {
     return day === currentDay;
   });
 };
+const isWeekend = (date: Date): boolean => {
+  const dayOfWeek = getDay(date);
+  return dayOfWeek === 0 || dayOfWeek === 6;
+};
+
 export const getDays = (dateString: string, weekStartDay: startDay) => {
   const parsedDate = parse(dateString, 'MMMM yyyy', new Date());
   const firstDayAtWeek = getFirstDayOfWeek(dateString);
   const pos = getPosInDays(weekStartDay, firstDayAtWeek);
   const daysLength = getDaysInMonth(dateString) + pos;
   const days = [];
+
   let subDaysPos = pos;
   let addDaysPos = 0;
-  console.log(pos);
+
   for (let i = 0; i < daysLength; i++) {
     if (i < pos) {
+      const date = subDays(parsedDate, subDaysPos);
+      const day = format(date, 'd');
+      const fullDate = format(date, 'dd MMMM yyyy');
       days.push({
-        day: subDays(parsedDate, subDaysPos),
+        fullDate: fullDate,
+        day: day,
+        extraDay: true,
+        isWeekend: isWeekend(date),
+        isHoliday: isHoliday(date),
       });
       subDaysPos--;
     } else {
+      const date = addDays(parsedDate, addDaysPos);
+      const day = format(date, 'd');
+      const fullDate = format(date, 'dd MMMM yyyy');
       days.push({
-        day: addDays(parsedDate, addDaysPos),
+        fullDate: fullDate,
+        extraDay: false,
+        day: day,
+        isWeekend: isWeekend(date),
+        isHoliday: isHoliday(date),
       });
       addDaysPos++;
     }
+  }
+  const lastExtraPos = 7 - (days.length % 7);
+  if (lastExtraPos === 7) return days;
+  for (let i = 0; i < lastExtraPos; i++) {
+    const date = addDays(parsedDate, addDaysPos);
+    const day = format(date, 'd');
+    const fullDate = format(date, 'dd MMMM yyyy');
+    days.push({
+      fullDate: fullDate,
+      day: day,
+      extraDay: true,
+      isWeekend: isWeekend(date),
+      isHoliday: isHoliday(date),
+    });
+    addDaysPos++;
   }
   return days;
 };
