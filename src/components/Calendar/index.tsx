@@ -3,11 +3,12 @@ import {
   WEEKS_START_WITH_MONDAY,
   WEEKS_START_WITH_SUNDAY,
 } from '@/constants';
+import classNames from 'classnames';
 import { FC, useState } from 'react';
 
 import { dateRange, getCurrentDate, getDays } from '@/utils/functions';
+import { PopUp } from '@/components/PopUp';
 
-import { PopUp } from '../PopUp';
 import styles from './calendar.module.css';
 import { MONDAY } from './constants';
 import { Header } from './Header';
@@ -101,17 +102,19 @@ export const Calendar: FC<CalendarProps> = ({
                 ))}
           </div>
           <div className={styles.days}>
-            {days.map(({ day, extraDay, fullDate, isHoliday, isWeekend }) => (
-              <button
-                className={`${!withExtraDays && extraDay && styles.unVisible} 
-                ${extraDay && styles.extraDay} 
-                ${withWeekends && isWeekend && styles.weekend}
-                ${withHolidays && isHoliday && styles.holiday}`}
-                key={fullDate}
-              >
-                {day}
-              </button>
-            ))}
+            {days.map(({ day, extraDay, fullDate, isHoliday, isWeekend }) => {
+              const buttonClass = classNames({
+                [styles.unVisible]: !withExtraDays && extraDay,
+                [styles.extraDay]: extraDay,
+                [styles.weekend]: withWeekends && isWeekend,
+                [styles.holiday]: withHolidays && isHoliday,
+              });
+              return (
+                <button className={buttonClass} key={fullDate}>
+                  {day}
+                </button>
+              );
+            })}
           </div>
         </>
       )}

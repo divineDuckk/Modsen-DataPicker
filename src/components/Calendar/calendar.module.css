@@ -1,78 +1,160 @@
+:root {
+  --popupWrapperBg: #00000033;
+  --popupContainerBg: #f4f2ef;
+  --popupButtonHover: #00ffff;
+  --popupButtonPaddingTopBot: 3px;
+  --popupButtonPaddingLeftRight: 7px;
+  --popupButtonTransition: 0.3s;
+  --popupButtonBorderRadius: 5px;
+  --popupZIndex: 1;
+  --popupWrapperTop: 0;
+  --popupWrapperLeft: 0;
+  --popupWrapperBorderRadius: 8px;
+  --popupTopPanelBorderSize: 1px;
+  --popupTopPanelBorderRadius: 3px;
+  --popupContainerWidth: 70%;
+  --popupContainerHeight: 85%;
+  --popupContainerBorderRadius: 5px;
+  --popupMainContainerMarginTop: 14px;
+  --popupMainContainerHeight: 70%;
+  --popupMainContainerGap: 5px;
+  --popupH3MarginLeft: 10px;
+  --popupH3FontSize: 14px;
+  --popupCloseBtnSize: 30px;
+  --popupCloseBtnTopBeforeAfter: 50%;
+  --popupCloseBtnLeftBeforeAfter: 50%;
+  --popupCloseBtnWidthBeforeAfter: 2px;
+  --popupCloseBtnHeightBeforeAfter: 10px;
+  --popupCloseBtnTranslateBeforeAfter: -50%;
+  --popupCloseBtnRotateBefore: 45deg;
+  --popupCloseBtnRotateAfter: -45deg;
+
+  --calendarBorderColor: #e1e1e1;
+  --calendarButtonHoverBg: #f1f1f1;
+  --calendarWeekendColor: red;
+  --calendarHolidayBg: #f6d0d0;
+  --calendarActiveMonth: #9ee3cc;
+  --calendarWidth: 250px;
+  --calendarPadding: 10px;
+  --calendarBorderSize: 1px;
+  --calendarBorderRadius: 8px;
+
+  --headerHoverBg: #f1f1f1;
+  --headerMenuButtonBg: #f1faf7;
+  --headerMenuButtonHoverBg: #fab1b1;
+  --headerMenuGap: 25px;
+  --headerButtonPadding: 8px;
+  --headerMenuPaddingTopBot: 8px;
+  --headerMenuPaddingLeftRight: 15px;
+  --headerMenuButtonWidth: 70px;
+  --headerMenuButtonTransition: 0.2s;
+  --headerMenuButtonBorderRadius: 5px;
+  --headerMarginBot: 5px;
+  --headerBtnFontSize: 14px;
+  --headerBtnBorderRadius: 8px;
+
+  --srcrollTrackColor: #f1f1f1;
+  --srcrollThumbColor: #d9b3c1;
+  --srcrollWidth: 8px;
+  --srcrollHeight: 12px;
+  --srcrollBorderRadius: 10px;
+
+  --weekSize: 32px;
+  --weekFontSize: 14px;
+  --weekFontWeight: 700;
+
+  --daysGridColums: 7;
+  --daysGridColumsSize: 1fr;
+  --daysButtonSize: 32px;
+  --daysButtonFontSize: 13px;
+  --daysButtonFontWeight: 600;
+  --daysButtonTransition: 0.2s;
+
+  --extraDayOpacity: 0.6;
+
+  --monthGap: 5px;
+
+  --largestFontWeight: 700;
+}
+
 .calendar {
   position: relative;
   box-sizing: border-box;
-  width: 250px;
-  padding: 10px;
-  border: 1px solid #e1e1e1;
-  border-radius: 8px;
+  width: var(--calendarWidth);
+  padding: var(--calendarPadding);
+  border: var(--calendarBorderSize) solid var(--calendarBorderColor);
+  border-radius: var(--calendarBorderRadius);
   font-family: Arial;
   .weeks {
     display: flex;
     justify-content: center;
     .week {
-      width: 32px;
-      height: 32px;
+      width: var(--weekSize);
+      height: var(--weekSize);
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: 14px;
-      font-weight: 700;
+      font-size: var(--weekFontSize);
+      font-weight: var(--weekFontWeight);
       cursor: default;
     }
   }
 }
 .days {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(
+    var(--daysGridColums),
+    var(--daysGridColumsSize)
+  );
 
   button {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: var(--daysButtonSize);
+    height: var(--daysButtonSize);
     background-color: transparent;
-    font-size: 13px;
-    font-weight: 60;
+    font-size: var(--daysButtonFontSize);
+    font-weight: var(--daysButtonFontWeight);
     border: 0;
     cursor: pointer;
-    border-radius: 8px;
+    border-radius: var(--calendarBorderRadius);
     &:hover {
-      background-color: #f1f1f1;
-      transition: 0.2s;
+      background-color: var(--calendarButtonHoverBg);
+      transition: var(--daysButtonTransition);
     }
   }
   .unVisible {
     visibility: hidden;
   }
   .extraDay {
-    opacity: 0.6;
+    opacity: var(--extraDayOpacity);
   }
   .weekend {
-    color: red;
+    color: var(--calendarWeekendColor);
   }
   .holiday {
-    background-color: rgb(246, 208, 208);
+    background-color: var(--calendarHolidayBg);
   }
 }
 .headerMenu {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: var(--headerMenuGap);
   flex-direction: column;
   button {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 8px 15px;
-    width: 70px;
+    padding: var(--headerMenuPaddingTopBot) var(--headerMenuPaddingLeftRight);
+    width: var(--headerMenuButtonWidth);
     border: 0;
-    background-color: rgb(241, 250, 247);
+    background-color: var(--headerMenuButtonBg);
     cursor: pointer;
-    transition: 0.2s;
-    border-radius: 5px;
+    transition: var(--headerMenuButtonTransition);
+    border-radius: var(--headerMenuButtonBorderRadius);
     &:hover {
-      background-color: rgb(250, 177, 177);
+      background-color: var(--headerMenuButtonHoverBg);
     }
   }
 }
@@ -81,19 +163,19 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 5px;
+  gap: var(--monthGap);
 
   .activeMonth {
-    background-color: rgb(158, 227, 204);
+    background-color: var(--calendarActiveMonth);
   }
 }
 .popupButton {
-  padding: 3px 7px;
+  padding: var(--popupButtonPaddingTopBot) var(--popupButtonPaddingLeftRight);
   cursor: pointer;
   border: 0;
-  transition: 0.3s;
-  border-radius: 5px;
+  transition: var(--popupButtonTransition);
+  border-radius: var(--popupButtonBorderRadius);
   &:hover {
-    background-color: aqua;
+    background-color: var(--popupButtonHover);
   }
 }

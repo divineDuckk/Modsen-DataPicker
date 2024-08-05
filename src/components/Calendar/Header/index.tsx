@@ -1,8 +1,8 @@
-import { getDateOneMonthAgo, getDateOneMonthAhead } from '@/utils/functions';
 import { FC } from 'react';
 
-import next from '@/assets/next.svg';
-import prev from '@/assets/prev.svg';
+import { getDateOneMonthAgo, getDateOneMonthAhead } from '@/utils/functions';
+import Next from '@/assets/next.svg';
+import Prev from '@/assets/prev.svg';
 
 import styles from './header.module.css';
 import { HeaderProps } from './types';
@@ -27,13 +27,13 @@ export const Header: FC<HeaderProps> = ({
   return (
     <div className={styles.header}>
       <button className={styles.headerButton} onClick={handlePrev}>
-        <img src={prev} alt="prev button" />
+        <Prev />
       </button>
       <button className={styles.headerButton} onClick={handleDateClick}>
         {date}
       </button>
       <button className={styles.headerButton} onClick={handleNext}>
-        <img src={next} alt="next button" />
+        <Next />
       </button>
     </div>
   );

@@ -43,6 +43,19 @@ const config: StorybookConfig = {
     if (!resolve.alias) {
       resolve.alias = {};
     }
+
+    const fileLoaderRule = (module.rules as any[]).find((rule: any) =>
+      rule.test instanceof RegExp ? rule.test.test('.svg') : false,
+    );
+
+    if (fileLoaderRule && typeof fileLoaderRule.exclude === 'undefined') {
+      fileLoaderRule.exclude = /\.svg$/;
+    }
+    module.rules.push({
+      test: /\.svg$/,
+      loader: 'svg-react-loader',
+    });
+
     resolve.alias = {
       ...resolve.alias,
       '@': path.resolve(__dirname, '../src'),

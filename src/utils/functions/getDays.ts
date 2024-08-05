@@ -8,15 +8,19 @@ import {
   startOfMonth,
   subDays,
 } from 'date-fns';
-import Holidays from 'date-holidays';
-
+import {
+  MOCKED_HOLYDAYS,
+  WEEKS_START_WITH_MONDAY,
+  WEEKS_START_WITH_SUNDAY,
+} from '@/constants';
 import { startDay } from '@/interfaces';
-import { WEEKS_START_WITH_MONDAY, WEEKS_START_WITH_SUNDAY } from '@/constants';
 
-const hd = new Holidays('BY');
-
-const isHoliday = (date: Date): boolean => {
-  return !!hd.isHoliday(date);
+const isHoliday = (date: string): boolean => {
+  return MOCKED_HOLYDAYS.some(holyday => {
+    const dateWithoutYear = date.substring(5);
+    const holidayWithoutYear = holyday.startDate.substring(5);
+    return dateWithoutYear === holidayWithoutYear;
+  });
 };
 
 const getFirstDayOfWeek = (dateString: string) => {
@@ -66,25 +70,25 @@ export const getDays = (dateString: string, weekStartDay: startDay) => {
     if (i < pos) {
       const date = subDays(parsedDate, subDaysPos);
       const day = format(date, 'd');
-      const fullDate = format(date, 'dd MMMM yyyy');
+      const fullDate = format(date, 'yyyy-MM-dd');
       days.push({
         fullDate: fullDate,
         day: day,
         extraDay: true,
         isWeekend: isWeekend(date),
-        isHoliday: isHoliday(date),
+        isHoliday: isHoliday(fullDate),
       });
       subDaysPos--;
     } else {
       const date = addDays(parsedDate, addDaysPos);
       const day = format(date, 'd');
-      const fullDate = format(date, 'dd MMMM yyyy');
+      const fullDate = format(date, 'yyyy-MM-dd');
       days.push({
         fullDate: fullDate,
         extraDay: false,
         day: day,
         isWeekend: isWeekend(date),
-        isHoliday: isHoliday(date),
+        isHoliday: isHoliday(fullDate),
       });
       addDaysPos++;
     }
@@ -94,13 +98,13 @@ export const getDays = (dateString: string, weekStartDay: startDay) => {
   for (let i = 0; i < lastExtraPos; i++) {
     const date = addDays(parsedDate, addDaysPos);
     const day = format(date, 'd');
-    const fullDate = format(date, 'dd MMMM yyyy');
+    const fullDate = format(date, 'yyyy-MM-dd');
     days.push({
       fullDate: fullDate,
       day: day,
       extraDay: true,
       isWeekend: isWeekend(date),
-      isHoliday: isHoliday(date),
+      isHoliday: isHoliday(fullDate),
     });
     addDaysPos++;
   }

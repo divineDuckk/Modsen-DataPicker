@@ -1,7 +1,7 @@
 .header {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 5px;
+  margin-bottom: var(--headerMarginBot);
 }
 .headerButton {
   display: flex;
@@ -9,17 +9,17 @@
   justify-content: center;
   background-color: transparent;
   border: 0;
-  transition: 0.2s;
-  padding: 8px;
-  font-weight: 700;
-  font-size: 14px;
+  transition: var(--headerMenuButtonTransition);
+  padding: var(--headerButtonPadding);
+  font-size: var(--headerBtnFontSize);
+  font-weight: var(--largestFontWeight);
   &:active,
   &:focus {
     outline: none;
   }
   cursor: pointer;
   &:hover {
-    background-color: #f1f1f1;
-    border-radius: 8px;
+    background-color: var(--headerHoverBg);
+    border-radius: var(--headerBtnBorderRadius);
   }
 }
