@@ -7,4 +7,6 @@ export interface CalendarProps {
   withExtraDays: boolean;
   withWeekends: boolean;
   withHolidays: boolean;
+  handlePickDay?: (fullDate: string) => () => void;
+  startDate?: string;
 }

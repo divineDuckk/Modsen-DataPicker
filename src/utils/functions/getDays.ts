@@ -17,7 +17,7 @@ import { startDay } from '@/interfaces';
 
 const isHoliday = (date: string): boolean => {
   return MOCKED_HOLYDAYS.some(holyday => {
-    const dateWithoutYear = date.substring(5);
+    const dateWithoutYear = date.substring(0, 5);
     const holidayWithoutYear = holyday.startDate.substring(5);
     return dateWithoutYear === holidayWithoutYear;
   });
@@ -70,7 +70,7 @@ export const getDays = (dateString: string, weekStartDay: startDay) => {
     if (i < pos) {
       const date = subDays(parsedDate, subDaysPos);
       const day = format(date, 'd');
-      const fullDate = format(date, 'yyyy-MM-dd');
+      const fullDate = format(date, 'dd/MM/yyyy');
       days.push({
         fullDate: fullDate,
         day: day,
@@ -82,7 +82,7 @@ export const getDays = (dateString: string, weekStartDay: startDay) => {
     } else {
       const date = addDays(parsedDate, addDaysPos);
       const day = format(date, 'd');
-      const fullDate = format(date, 'yyyy-MM-dd');
+      const fullDate = format(date, 'dd/MM/yyyy');
       days.push({
         fullDate: fullDate,
         extraDay: false,
@@ -98,7 +98,7 @@ export const getDays = (dateString: string, weekStartDay: startDay) => {
   for (let i = 0; i < lastExtraPos; i++) {
     const date = addDays(parsedDate, addDaysPos);
     const day = format(date, 'd');
-    const fullDate = format(date, 'yyyy-MM-dd');
+    const fullDate = format(date, 'dd/MM/yyyy');
     days.push({
       fullDate: fullDate,
       day: day,

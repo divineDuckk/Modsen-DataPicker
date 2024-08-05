@@ -34,7 +34,7 @@ export const WEEKS_START_WITH_SUNDAY = [
 ];
 export const DEFAULT_START_YEAR = 2003;
 export const DEFAULT_END_YEAR = 2037;
-
+export const INVALID_DATE = 'Invalid Date';
 export const MOCKED_HOLYDAYS: Holiday[] = [
   {
     id: '6c4a1714-9a09-4a2a-98c9-2c84161eb94c',
