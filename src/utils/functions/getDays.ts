@@ -18,7 +18,7 @@ import { startDay } from '@/interfaces';
 const isHoliday = (date: string): boolean => {
   return MOCKED_HOLYDAYS.some(holyday => {
     const dateWithoutYear = date.substring(0, 5);
-    const holidayWithoutYear = holyday.startDate.substring(5);
+    const holidayWithoutYear = holyday.startDate.substring(5).replace('-', '/');
     return dateWithoutYear === holidayWithoutYear;
   });
 };
