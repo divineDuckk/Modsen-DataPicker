@@ -1,3 +1,10 @@
+import { startDay } from '@/interfaces';
+
 export interface CalendarProps {
-  text: string;
+  startYear: number;
+  endYear: number;
+  weekStartDay: startDay;
+  withExtraDays: boolean;
+  withWeekends: boolean;
+  withHolidays: boolean;
 }

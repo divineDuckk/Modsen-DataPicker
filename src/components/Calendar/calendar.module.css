@@ -1,3 +1,102 @@
-.div {
-  background-color: blueviolet;
+.calendar {
+  position: relative;
+  box-sizing: border-box;
+  width: var(--calendarWidth);
+  padding: var(--calendarPadding);
+  border: var(--calendarBorderSize) solid var(--calendarBorderColor);
+  border-radius: var(--calendarBorderRadius);
+  font-family: Arial;
+  .weeks {
+    display: flex;
+    justify-content: center;
+    .week {
+      width: var(--weekSize);
+      height: var(--weekSize);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: var(--weekFontSize);
+      font-weight: var(--weekFontWeight);
+      cursor: default;
+    }
+  }
+}
+.days {
+  display: grid;
+  grid-template-columns: repeat(
+    var(--daysGridColums),
+    var(--daysGridColumsSize)
+  );
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--daysButtonSize);
+    height: var(--daysButtonSize);
+    background-color: transparent;
+    font-size: var(--daysButtonFontSize);
+    font-weight: var(--daysButtonFontWeight);
+    border: 0;
+    cursor: pointer;
+    border-radius: var(--calendarBorderRadius);
+    &:hover {
+      background-color: var(--calendarButtonHoverBg);
+      transition: var(--daysButtonTransition);
+    }
+  }
+  .unVisible {
+    visibility: hidden;
+  }
+  .extraDay {
+    opacity: var(--extraDayOpacity);
+  }
+  .weekend {
+    color: var(--calendarWeekendColor);
+  }
+  .holiday {
+    background-color: var(--calendarHolidayBg);
+  }
+}
+.headerMenu {
+  display: flex;
+  align-items: center;
+  gap: var(--headerMenuGap);
+  flex-direction: column;
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--headerMenuPaddingTopBot) var(--headerMenuPaddingLeftRight);
+    width: var(--headerMenuButtonWidth);
+    border: 0;
+    background-color: var(--headerMenuButtonBg);
+    cursor: pointer;
+    transition: var(--headerMenuButtonTransition);
+    border-radius: var(--headerMenuButtonBorderRadius);
+    &:hover {
+      background-color: var(--headerMenuButtonHoverBg);
+    }
+  }
+}
+
+.months {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--monthGap);
+
+  .activeMonth {
+    background-color: var(--calendarActiveMonth);
+  }
+}
+.popupButton {
+  padding: var(--popupButtonPaddingTopBot) var(--popupButtonPaddingLeftRight);
+  cursor: pointer;
+  border: 0;
+  transition: var(--popupButtonTransition);
+  border-radius: var(--popupButtonBorderRadius);
+  &:hover {
+    background-color: var(--popupButtonHover);
+  }
 }

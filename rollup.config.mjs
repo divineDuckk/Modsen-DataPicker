@@ -8,8 +8,11 @@ import { fileURLToPath } from 'url';
 import alias from '@rollup/plugin-alias';
 import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
 import resolve from '@rollup/plugin-node-resolve';
+import svgr from '@svgr/rollup';
 import typescript from '@rollup/plugin-typescript';
+import url from '@rollup/plugin-url';
 
 import pkg from './package.json' with { type: 'json' };
 
@@ -35,6 +38,9 @@ export default {
     alias({
       entries: [{ find: '@src', replacement: path.resolve(__dirname, 'src') }],
     }),
+    resolve(),
+    url(),
+    svgr(),
     postcss({
       modules: true,
       extract: false,
@@ -53,6 +59,6 @@ export default {
     }),
     terser(),
     external(),
-    resolve(),
+    json(),
   ],
 };
