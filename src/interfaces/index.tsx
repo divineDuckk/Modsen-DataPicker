@@ -13,3 +13,11 @@ export interface Holiday {
   ];
   nationwide: true;
 }
+
+export interface Day {
+  fullDate: string;
+  day: string;
+  extraDay: boolean;
+  isWeekend: boolean;
+  isHoliday: boolean;
+}

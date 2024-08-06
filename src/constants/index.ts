@@ -32,8 +32,6 @@ export const WEEKS_START_WITH_SUNDAY = [
   'Fr',
   'Sa',
 ];
-export const DEFAULT_START_YEAR = 2003;
-export const DEFAULT_END_YEAR = 2037;
 
 export const MOCKED_HOLYDAYS: Holiday[] = [
   {

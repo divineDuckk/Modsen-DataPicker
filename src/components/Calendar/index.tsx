@@ -10,9 +10,11 @@ import { dateRange, getCurrentDate, getDays } from '@/utils/functions';
 import { PopUp } from '@/components/PopUp';
 
 import styles from './calendar.module.css';
-import { MONDAY } from './constants';
+import { MONDAY, SUNDAY } from './constants';
 import { Header } from './Header';
 import { CalendarProps } from './types';
+
+import './theme.css';
 
 export const Calendar: FC<CalendarProps> = ({
   startYear,
@@ -89,17 +91,14 @@ export const Calendar: FC<CalendarProps> = ({
             setDate={setDate}
           />
           <div className={styles.weeks}>
-            {weekStartDay === MONDAY
-              ? WEEKS_START_WITH_MONDAY.map(weekDay => (
-                  <div key={weekDay} className={styles.week}>
-                    {weekDay}
-                  </div>
-                ))
-              : WEEKS_START_WITH_SUNDAY.map(weekDay => (
-                  <div key={weekDay} className={styles.week}>
-                    {weekDay}
-                  </div>
-                ))}
+            {{
+              [MONDAY]: WEEKS_START_WITH_MONDAY,
+              [SUNDAY]: WEEKS_START_WITH_SUNDAY,
+            }[weekStartDay].map(weekDay => (
+              <div key={weekDay} className={styles.week}>
+                {weekDay}
+              </div>
+            ))}
           </div>
           <div className={styles.days}>
             {days.map(({ day, extraDay, fullDate, isHoliday, isWeekend }) => {

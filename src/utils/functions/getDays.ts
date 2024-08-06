@@ -13,7 +13,7 @@ import {
   WEEKS_START_WITH_MONDAY,
   WEEKS_START_WITH_SUNDAY,
 } from '@/constants';
-import { startDay } from '@/interfaces';
+import { Day, startDay } from '@/interfaces';
 
 const isHoliday = (date: string): boolean => {
   return MOCKED_HOLYDAYS.some(holyday => {
@@ -61,52 +61,43 @@ export const getDays = (dateString: string, weekStartDay: startDay) => {
   const firstDayAtWeek = getFirstDayOfWeek(dateString);
   const pos = getPosInDays(weekStartDay, firstDayAtWeek);
   const daysLength = getDaysInMonth(dateString) + pos;
-  const days = [];
+  const days: Day[] = [];
 
   let subDaysPos = pos;
   let addDaysPos = 0;
 
-  for (let i = 0; i < daysLength; i++) {
-    if (i < pos) {
-      const date = subDays(parsedDate, subDaysPos);
-      const day = format(date, 'd');
-      const fullDate = format(date, 'yyyy-MM-dd');
-      days.push({
-        fullDate: fullDate,
-        day: day,
-        extraDay: true,
-        isWeekend: isWeekend(date),
-        isHoliday: isHoliday(fullDate),
-      });
-      subDaysPos--;
-    } else {
-      const date = addDays(parsedDate, addDaysPos);
-      const day = format(date, 'd');
-      const fullDate = format(date, 'yyyy-MM-dd');
-      days.push({
-        fullDate: fullDate,
-        extraDay: false,
-        day: day,
-        isWeekend: isWeekend(date),
-        isHoliday: isHoliday(fullDate),
-      });
-      addDaysPos++;
-    }
-  }
-  const lastExtraPos = 7 - (days.length % 7);
-  if (lastExtraPos === 7) return days;
-  for (let i = 0; i < lastExtraPos; i++) {
-    const date = addDays(parsedDate, addDaysPos);
+  const generateDays = (date: Date, extraDay: boolean) => {
     const day = format(date, 'd');
     const fullDate = format(date, 'yyyy-MM-dd');
     days.push({
       fullDate: fullDate,
       day: day,
-      extraDay: true,
+      extraDay: extraDay,
       isWeekend: isWeekend(date),
       isHoliday: isHoliday(fullDate),
     });
-    addDaysPos++;
+  };
+
+  Array.from({ length: daysLength }).forEach((_, i) => {
+    if (i < pos) {
+      const date = subDays(parsedDate, subDaysPos);
+      generateDays(date, true);
+      subDaysPos--;
+    } else {
+      const date = addDays(parsedDate, addDaysPos);
+      generateDays(date, false);
+      addDaysPos++;
+    }
+  });
+
+  const lastExtraPos = 7 - (days.length % 7);
+  if (lastExtraPos !== 7) {
+    Array.from({ length: lastExtraPos }).forEach(() => {
+      const date = addDays(parsedDate, addDaysPos);
+      generateDays(date, true);
+      addDaysPos++;
+    });
   }
+
   return days;
 };
