@@ -9,6 +9,7 @@ import {
   subDays,
 } from 'date-fns';
 import {
+  MAX_DAYS_PER_WEEK,
   MOCKED_HOLYDAYS,
   WEEKS_START_WITH_MONDAY,
   WEEKS_START_WITH_SUNDAY,
@@ -90,8 +91,8 @@ export const getDays = (dateString: string, weekStartDay: startDay) => {
     }
   });
 
-  const lastExtraPos = 7 - (days.length % 7);
-  if (lastExtraPos !== 7) {
+  const lastExtraPos = MAX_DAYS_PER_WEEK - (days.length % MAX_DAYS_PER_WEEK);
+  if (lastExtraPos !== MAX_DAYS_PER_WEEK) {
     Array.from({ length: lastExtraPos }).forEach(() => {
       const date = addDays(parsedDate, addDaysPos);
       generateDays(date, true);

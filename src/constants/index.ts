@@ -33,6 +33,8 @@ export const WEEKS_START_WITH_SUNDAY = [
   'Sa',
 ];
 
+export const MAX_DAYS_PER_WEEK = 7;
+
 export const MOCKED_HOLYDAYS: Holiday[] = [
   {
     id: '6c4a1714-9a09-4a2a-98c9-2c84161eb94c',
