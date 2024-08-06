@@ -18,8 +18,8 @@ import { Day, startDay } from '@/interfaces';
 
 const isHoliday = (date: string): boolean => {
   return MOCKED_HOLYDAYS.some(holyday => {
-    const dateWithoutYear = date.substring(5);
-    const holidayWithoutYear = holyday.startDate.substring(5);
+    const dateWithoutYear = date.substring(0, 5);
+    const holidayWithoutYear = holyday.startDate.substring(5).replace('-', '/');
     return dateWithoutYear === holidayWithoutYear;
   });
 };
@@ -69,7 +69,7 @@ export const getDays = (dateString: string, weekStartDay: startDay) => {
 
   const generateDays = (date: Date, extraDay: boolean) => {
     const day = format(date, 'd');
-    const fullDate = format(date, 'yyyy-MM-dd');
+    const fullDate = format(date, 'dd/MM/yyyy');
     days.push({
       fullDate: fullDate,
       day: day,

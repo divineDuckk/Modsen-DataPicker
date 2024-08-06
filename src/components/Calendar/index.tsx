@@ -3,10 +3,16 @@ import {
   WEEKS_START_WITH_MONDAY,
   WEEKS_START_WITH_SUNDAY,
 } from '@/constants';
+import {
+  checkYearInRange,
+  convertDateFormat,
+  dateRange,
+  getCurrentDate,
+  getDays,
+} from '@/utils/functions';
 import classNames from 'classnames';
-import { FC, useState } from 'react';
+import { FC, useEffect, useState } from 'react';
 
-import { dateRange, getCurrentDate, getDays } from '@/utils/functions';
 import { PopUp } from '@/components/PopUp';
 
 import styles from './calendar.module.css';
@@ -23,10 +29,22 @@ export const Calendar: FC<CalendarProps> = ({
   withExtraDays,
   withWeekends,
   withHolidays,
+  startDate,
+  handlePickDay,
 }) => {
   const [isHeaderMenuOpen, setIsHeaderMenuOpen] = useState(false);
-  const [date, setDate] = useState(getCurrentDate());
+  const [date, setDate] = useState(
+    convertDateFormat(startDate) || getCurrentDate(),
+  );
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  useEffect(() => {
+    if (startDate && !checkYearInRange(startDate, startYear, endYear)) return;
+    const prettyFormat = convertDateFormat(startDate);
+    if (prettyFormat) {
+      setDate(prettyFormat);
+    }
+  }, [startDate]);
 
   const [currentMonth, currentYear] = date.split(' ');
   const yearsArray = dateRange(startYear, endYear);
@@ -107,9 +125,15 @@ export const Calendar: FC<CalendarProps> = ({
                 [styles.extraDay]: extraDay,
                 [styles.weekend]: withWeekends && isWeekend,
                 [styles.holiday]: withHolidays && isHoliday,
+                [styles.datePickerEffect]: !!handlePickDay,
+                [styles.datePicker]: startDate === fullDate,
               });
               return (
-                <button className={buttonClass} key={fullDate}>
+                <button
+                  className={buttonClass}
+                  key={fullDate}
+                  onClick={handlePickDay && handlePickDay(fullDate)}
+                >
                   {day}
                 </button>
               );

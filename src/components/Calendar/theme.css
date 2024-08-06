@@ -75,4 +75,7 @@
   --monthGap: 5px;
 
   --largestFontWeight: 700;
+
+  --datePickerActiveFocusColor: #2f80ed;
+  --datePickerColor: white;
 }
