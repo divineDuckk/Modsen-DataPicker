@@ -77,5 +77,9 @@
   --largestFontWeight: 700;
 
   --datePickerActiveFocusColor: #2f80ed;
+  --datePickerOpacity: 0.8;
   --datePickerColor: white;
+
+  --inRangeColorBg: #2f80ed1a;
+  --inRangeColor: #2f80ed;
 }

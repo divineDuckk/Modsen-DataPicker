@@ -9,7 +9,7 @@ import {
 import classNames from 'classnames';
 import { ChangeEvent, FC, useState } from 'react';
 
-import { checkDateInRange } from '@/utils/functions';
+import { checkDateInYearsRange } from '@/utils/functions';
 import CalendarIcon from '@/assets/calendar.svg';
 import ClearInputIcon from '@/assets/clear.svg';
 
@@ -36,7 +36,7 @@ export const DateInput: FC<DateInputProps> = ({
 
     if (
       newValue.length === DATE_INPUT_MAX_LENGTH &&
-      !checkDateInRange(newValue, startYear, endYear)
+      !checkDateInYearsRange(newValue, startYear, endYear)
     ) {
       setIsInputError(true);
     } else {

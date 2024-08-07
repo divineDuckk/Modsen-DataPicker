@@ -9,6 +9,7 @@ import {
   dateRange,
   getCurrentDate,
   getDays,
+  isDateInRange,
 } from '@/utils/functions';
 import classNames from 'classnames';
 import { FC, useEffect, useState } from 'react';
@@ -31,6 +32,7 @@ export const Calendar: FC<CalendarProps> = ({
   withHolidays,
   startDate,
   handlePickDay,
+  endDate,
 }) => {
   const [isHeaderMenuOpen, setIsHeaderMenuOpen] = useState(false);
   const [date, setDate] = useState(
@@ -127,6 +129,11 @@ export const Calendar: FC<CalendarProps> = ({
                 [styles.holiday]: withHolidays && isHoliday,
                 [styles.datePickerEffect]: !!handlePickDay,
                 [styles.datePicker]: startDate === fullDate,
+                [styles.lastPick]: endDate === fullDate,
+                [styles.inRange]:
+                  startDate &&
+                  endDate &&
+                  isDateInRange(fullDate, startDate, endDate),
               });
               return (
                 <button
