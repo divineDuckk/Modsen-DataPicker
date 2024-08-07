@@ -1,9 +1,9 @@
-import { ChangeEvent } from 'react';
+import { Dispatch, SetStateAction } from 'react';
 
 export interface DateInputProps {
   dateValue: string;
-  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  setInputValue: Dispatch<SetStateAction<string>>;
   title: string;
-  isInputError: boolean;
-  handleClear: () => void;
+  startYear: number;
+  endYear: number;
 }
