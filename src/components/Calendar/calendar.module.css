@@ -27,7 +27,19 @@
     var(--daysGridColums),
     var(--daysGridColumsSize)
   );
-
+  .datePickerEffect {
+    &:active,
+    &:focus {
+      background-color: var(--datePickerActiveFocusColor);
+      transition: var(--daysButtonTransition);
+      color: var(--datePickerColor);
+    }
+  }
+  .datePicker {
+    background-color: var(--datePickerActiveFocusColor);
+    transition: var(--daysButtonTransition);
+    color: var(--datePickerColor);
+  }
   button {
     display: flex;
     align-items: center;

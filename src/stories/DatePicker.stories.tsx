@@ -1,29 +1,22 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { Calendar } from '@/components/Calendar';
 import { CalendarProps } from '@/components/Calendar/types';
+import { DatePicker } from '@/components/DatePicker';
 
 export default {
-  title: 'Calendar',
-  component: Calendar,
+  title: 'DatePicker',
+  component: DatePicker,
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
   argTypes: {
-    handlePickDay: {
-      table: {
-        disable: true,
-      },
-    },
     startDate: {
-      table: {
-        disable: true,
-      },
+      control: 'text',
     },
   },
-  tags: ['autodocs'],
-} as Meta<typeof Calendar>;
+} as Meta<typeof DatePicker>;
 
-const Template: StoryFn<CalendarProps> = args => <Calendar {...args} />;
+const Template: StoryFn<CalendarProps> = args => <DatePicker {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {

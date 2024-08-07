@@ -1,6 +1,7 @@
 import { startDay } from '@/interfaces';
+import { DatePickerProps } from '@/components/DatePicker/types';
 
-export interface CalendarProps {
+export interface CalendarProps extends DatePickerProps {
   startYear: number;
   endYear: number;
   weekStartDay: startDay;

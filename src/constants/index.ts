@@ -34,7 +34,8 @@ export const WEEKS_START_WITH_SUNDAY = [
 ];
 
 export const MAX_DAYS_PER_WEEK = 7;
-
+export const INVALID_DATE = 'Invalid Date';
+export const MAX_MONTH_PER_YEAR = 12;
 export const MOCKED_HOLYDAYS: Holiday[] = [
   {
     id: '6c4a1714-9a09-4a2a-98c9-2c84161eb94c',

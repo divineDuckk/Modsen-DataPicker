@@ -3,3 +3,8 @@ export * from './dateRange';
 export * from './getCurrentDate';
 export * from './getDateOneMonthAgo';
 export * from './getDateOneMonthAhead';
+export * from './checkDayInRange';
+export * from './checkMonthInRange';
+export * from './checkYearInRange';
+export * from './checkDateInRange';
+export * from './convertDateFormat';
