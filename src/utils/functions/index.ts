@@ -6,5 +6,6 @@ export * from './getDateOneMonthAhead';
 export * from './checkDayInRange';
 export * from './checkMonthInRange';
 export * from './checkYearInRange';
-export * from './checkDateInRange';
+export * from './checkDateInYearsRange';
 export * from './convertDateFormat';
+export * from './isDateInDatesRange';
