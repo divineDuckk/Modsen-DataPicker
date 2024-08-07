@@ -10,7 +10,7 @@ import { ChangeEvent, ComponentType, useState } from 'react';
 import { CalendarProps } from '@/components/Calendar/types';
 import { DateInput } from '@/components/DateInput';
 import { Calendar } from '@/components/Calendar';
-import { checkDate } from '@/utils/functions';
+import { checkDateInRange } from '@/utils/functions';
 
 import { datePickerService } from './service';
 
@@ -31,7 +31,10 @@ const withCalendarDatePickInput = <P extends CalendarProps>(
       if (newValue.length > LAST_SLASH_POS)
         newValue = `${newValue.slice(0, LAST_SLASH_POS)}/${newValue.slice(LAST_SLASH_POS)}`;
 
-      if (newValue.length === 10 && !checkDate(newValue, startYear, endYear)) {
+      if (
+        newValue.length === 10 &&
+        !checkDateInRange(newValue, startYear, endYear)
+      ) {
         setIsInputError(true);
       } else {
         setIsInputError(false);

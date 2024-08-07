@@ -2,7 +2,7 @@ import { checkDayInRange } from './checkDayInRange';
 import { checkMonthInRange } from './checkMonthInRange';
 import { checkYearInRange } from './checkYearInRange';
 
-export const checkDate = (
+export const checkDateInRange = (
   dateString: string,
   startYear: number,
   endYear: number,
