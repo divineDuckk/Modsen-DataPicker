@@ -29,6 +29,12 @@ const withCalendarDatePickInput = <P extends CalendarProps>(
           title={DATE}
           startYear={props.startYear}
           endYear={props.endYear}
+          getServiceValue={datePickerService.getDateValue.bind(
+            datePickerService,
+          )}
+          setServiceValue={datePickerService.setDateValue.bind(
+            datePickerService,
+          )}
         />
         <WrappedComponents
           {...props}

@@ -6,4 +6,6 @@ export interface DateInputProps {
   title: string;
   startYear: number;
   endYear: number;
+  setServiceValue: (value: string) => void;
+  getServiceValue: () => string;
 }

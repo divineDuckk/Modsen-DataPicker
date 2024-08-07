@@ -10,7 +10,6 @@ import classNames from 'classnames';
 import { ChangeEvent, FC, useState } from 'react';
 
 import { checkDateInRange } from '@/utils/functions';
-import { datePickerService } from '@/components/DatePicker/service';
 import CalendarIcon from '@/assets/calendar.svg';
 import ClearInputIcon from '@/assets/clear.svg';
 
@@ -23,6 +22,8 @@ export const DateInput: FC<DateInputProps> = ({
   endYear,
   setInputValue,
   startYear,
+  getServiceValue,
+  setServiceValue,
 }) => {
   const [isInputError, setIsInputError] = useState(false);
 
@@ -41,15 +42,14 @@ export const DateInput: FC<DateInputProps> = ({
     } else {
       setIsInputError(false);
     }
-
-    datePickerService.setDateValue(newValue);
-    setInputValue(datePickerService.getDateValue());
+    setServiceValue(newValue);
+    setInputValue(getServiceValue());
   };
 
   const handleDateValueClear = () => {
     setIsInputError(false);
-    datePickerService.setDateValue('');
-    setInputValue(datePickerService.getDateValue());
+    setServiceValue('');
+    setInputValue(getServiceValue());
   };
 
   const inputClassName = classNames({
