@@ -21,3 +21,8 @@ export interface Day {
   isWeekend: boolean;
   isHoliday: boolean;
 }
+export interface Task {
+  date: string;
+  title: string;
+  description: string;
+}

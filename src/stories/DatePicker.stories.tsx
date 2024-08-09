@@ -13,6 +13,11 @@ export default {
     startDate: {
       control: 'text',
     },
+    endDate: {
+      table: {
+        disable: true,
+      },
+    },
   },
 } as Meta<typeof DatePicker>;
 

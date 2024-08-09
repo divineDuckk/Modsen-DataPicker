@@ -28,7 +28,7 @@
   .mainContainer {
     margin-top: var(--popupMainContainerMarginTop);
     height: var(--popupMainContainerHeight);
-    overflow-y: scroll;
+    overflow-y: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -59,8 +59,8 @@
       left: var(--popupCloseBtnLeftBeforeAfter);
       width: var(--popupCloseBtnBeforeAfter);
       height: var(--popupCloseBtnHeightBeforeAfter);
-      background-color: black;
       transform-origin: center center;
+      border: 1px solid black;
     }
     &::before {
       transform: translate(
