@@ -23,7 +23,13 @@ const withCalendarTaskPicker = <P extends CalendarProps>(
     };
     return (
       <>
-        <WrappedComponents {...props} handlePickDay={handlePickDay} />
+        <WrappedComponents
+          {...props}
+          handlePickDay={handlePickDay}
+          isNeedToNotify={taskPickerService.isNeedNotify.bind(
+            taskPickerService,
+          )}
+        />
         {isPopupOpen && (
           <PopUp onClose={handlePopupClose} title="Task menu">
             <TaskMenu

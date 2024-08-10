@@ -32,6 +32,16 @@
     background-color: var(--inRangeColorBg);
     color: var(--inRangeColor);
   }
+  .notify::before {
+    content: '';
+    position: absolute;
+    top: var(--notifyTop);
+    right: var(--notifyRight);
+    width: var(--notifySize);
+    height: var(--notifySize);
+    background-color: var(--notifyColor);
+    border-radius: var(--notifyBorderRadius);
+  }
   .datePicker {
     background-color: var(--datePickerActiveFocusColor);
     transition: var(--daysButtonTransition);
@@ -57,6 +67,7 @@
   }
 
   button {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;

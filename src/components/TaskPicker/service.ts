@@ -28,7 +28,10 @@ class TaskPickerService {
     const tasks = this.getTasksByDate(date);
     return tasks?.some(task => task.title === title);
   }
-
+  isNeedNotify(date: string) {
+    if (!this.tasks[date]) return false;
+    return !!this.tasks[date];
+  }
   getTasksByDate(date: string) {
     return this.tasks[date];
   }

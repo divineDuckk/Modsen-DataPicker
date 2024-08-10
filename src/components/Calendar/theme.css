@@ -82,4 +82,10 @@
 
   --inRangeColorBg: #2f80ed1a;
   --inRangeColor: #2f80ed;
+
+  --notifyTop: 3px;
+  --notifyRight: 3px;
+  --notifySize: 7px;
+  --notifyColor: red;
+  --notifyBorderRadius: 50%;
 }
