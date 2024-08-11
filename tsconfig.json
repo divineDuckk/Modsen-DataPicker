@@ -33,7 +33,7 @@
       "@/*": ["*"]
     }
   },
-  "include": ["src", "./module.d.ts"],
+  "include": ["src", "./module.d.ts", "src/setupTests.ts"],
   "exclude": ["node_modules", "dist", "*.config.js"],
-  "types": ["node"]
+  "types": ["node", "jest", "@testing-library/jest-dom"]
 }
