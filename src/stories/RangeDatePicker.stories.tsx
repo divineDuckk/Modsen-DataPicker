@@ -13,6 +13,9 @@ export default {
     startDate: {
       control: 'text',
     },
+    endDate: {
+      control: 'text',
+    },
   },
 } as Meta<typeof RangeDatePicker>;
 

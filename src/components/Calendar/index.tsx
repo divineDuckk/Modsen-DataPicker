@@ -33,6 +33,7 @@ export const Calendar: FC<CalendarProps> = ({
   startDate,
   handlePickDay,
   endDate,
+  isNeedToNotify,
 }) => {
   const [isHeaderMenuOpen, setIsHeaderMenuOpen] = useState(false);
   const [date, setDate] = useState(
@@ -134,6 +135,7 @@ export const Calendar: FC<CalendarProps> = ({
                   startDate &&
                   endDate &&
                   isDateInRange(fullDate, startDate, endDate),
+                [styles.notify]: isNeedToNotify && isNeedToNotify(fullDate),
               });
               return (
                 <button

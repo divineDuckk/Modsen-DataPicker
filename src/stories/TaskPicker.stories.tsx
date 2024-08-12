@@ -1,19 +1,15 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { Calendar } from '@/components/Calendar';
 import { CalendarProps } from '@/components/Calendar/types';
+import { TaskPicker } from '@/components/TaskPicker';
 
 export default {
-  title: 'Calendar',
-  component: Calendar,
+  title: 'TaskPicker',
+  component: TaskPicker,
   parameters: {
     layout: 'centered',
   },
+  tags: ['autodocs'],
   argTypes: {
-    handlePickDay: {
-      table: {
-        disable: true,
-      },
-    },
     startDate: {
       table: {
         disable: true,
@@ -25,11 +21,9 @@ export default {
       },
     },
   },
-  tags: ['autodocs'],
-} as Meta<typeof Calendar>;
+} as Meta<typeof TaskPicker>;
 
-const Template: StoryFn<CalendarProps> = args => <Calendar {...args} />;
-
+const Template: StoryFn<CalendarProps> = args => <TaskPicker {...args} />;
 export const Default = Template.bind({});
 Default.args = {
   weekStartDay: 'monday',
