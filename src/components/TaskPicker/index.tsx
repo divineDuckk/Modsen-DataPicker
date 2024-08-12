@@ -4,6 +4,7 @@ import { ComponentType, useState } from 'react';
 import { CalendarProps } from '@/components/Calendar/types';
 import { Calendar } from '@/components/Calendar';
 import { PopUp } from '@/components/PopUp';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 import { taskPickerService } from './service';
 import { TaskMenu } from './TaskMenu';
@@ -22,7 +23,7 @@ const withCalendarTaskPicker = <P extends CalendarProps>(
       setIsPopupOpen(false);
     };
     return (
-      <>
+      <ErrorBoundary>
         <WrappedComponents
           {...props}
           handlePickDay={handlePickDay}
@@ -37,7 +38,7 @@ const withCalendarTaskPicker = <P extends CalendarProps>(
             />
           </PopUp>
         )}
-      </>
+      </ErrorBoundary>
     );
   };
 };
