@@ -79,15 +79,20 @@ export const Calendar: FC<CalendarProps> = ({
         {isHeaderMenuOpen ? (
           <div className={styles.headerMenu}>
             <div className={styles.months}>
-              {MONTHS.map(month => (
-                <button
-                  className={currentMonth === month && styles.activeMonth}
-                  key={month}
-                  onClick={handleMonthClick(month)}
-                >
-                  {month}
-                </button>
-              ))}
+              {MONTHS.map(month => {
+                const activeMonth = classNames({
+                  [styles.activeMonth]: currentMonth === month,
+                });
+                return (
+                  <button
+                    className={activeMonth}
+                    key={month}
+                    onClick={handleMonthClick(month)}
+                  >
+                    {month}
+                  </button>
+                );
+              })}
             </div>
             <button onClick={handlePopupOpen}>{currentYear}</button>
             {isPopupOpen && (
