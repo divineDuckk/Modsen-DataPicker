@@ -4,6 +4,7 @@ import { ComponentType, useState } from 'react';
 import { CalendarProps } from '@/components/Calendar/types';
 import { DateInput } from '@/components/DateInput';
 import { Calendar } from '@/components/Calendar';
+import { ErrorBoundary } from '@/components/ErrorBoundary';
 
 import { FROM, TO } from './constants';
 import { rangeDatePickerService } from './service';
@@ -23,7 +24,7 @@ const withCalendarRangeDatePicker = <P extends CalendarProps>(
       setEndDate(rangeDatePickerService.getEndDate());
     };
     return (
-      <>
+      <ErrorBoundary>
         <DateInput
           dateValue={startDate}
           setInputValue={setStartDate}
@@ -56,7 +57,7 @@ const withCalendarRangeDatePicker = <P extends CalendarProps>(
           startDate={startDate}
           endDate={endDate}
         />
-      </>
+      </ErrorBoundary>
     );
   };
 };
