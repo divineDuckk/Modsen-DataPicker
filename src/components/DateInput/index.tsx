@@ -62,15 +62,20 @@ export const DateInput: FC<DateInputProps> = ({
       <div className={styles.inputWrapper}>
         <CalendarIcon className={styles.calendarIcon} />
         <input
+          data-testid="date-picker-input"
           type="text"
           value={dateValue}
           placeholder={DATE_INPUT_PLACEHOLDER}
           maxLength={DATE_INPUT_MAX_LENGTH}
           onChange={handleDateValueChange}
           className={inputClassName}
+          role={title}
         />
         <button>
-          <ClearInputIcon onClick={handleDateValueClear} />
+          <ClearInputIcon
+            data-testid="date-picker-clear-btn"
+            onClick={handleDateValueClear}
+          />
         </button>
       </div>
       {isInputError && <p className={styles.wrongDate}>{WRONG_DATE}</p>}

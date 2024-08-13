@@ -26,13 +26,25 @@ export const Header: FC<HeaderProps> = ({
 
   return (
     <div className={styles.header}>
-      <button className={styles.headerButton} onClick={handlePrev}>
+      <button
+        data-testid="prev"
+        className={styles.headerButton}
+        onClick={handlePrev}
+      >
         <Prev />
       </button>
-      <button className={styles.headerButton} onClick={handleDateClick}>
+      <button
+        data-testid="date-btn"
+        className={styles.headerButton}
+        onClick={handleDateClick}
+      >
         {date}
       </button>
-      <button className={styles.headerButton} onClick={handleNext}>
+      <button
+        data-testid="next"
+        className={styles.headerButton}
+        onClick={handleNext}
+      >
         <Next />
       </button>
     </div>
