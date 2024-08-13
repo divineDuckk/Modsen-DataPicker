@@ -128,7 +128,6 @@ export const Calendar: FC<CalendarProps> = ({
                 [styles.extraDay]: extraDay,
                 [styles.weekend]: withWeekends && isWeekend,
                 [styles.holiday]: withHolidays && isHoliday,
-                [styles.datePickerEffect]: !!handlePickDay,
                 [styles.datePicker]: startDate === fullDate,
                 [styles.lastPick]: endDate === fullDate,
                 [styles.inRange]:
@@ -139,6 +138,7 @@ export const Calendar: FC<CalendarProps> = ({
               });
               return (
                 <button
+                  data-testid={`${day}-extra-${extraDay}`}
                   className={buttonClass}
                   key={fullDate}
                   onClick={handlePickDay && handlePickDay(fullDate)}

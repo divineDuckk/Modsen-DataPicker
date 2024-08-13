@@ -68,15 +68,27 @@ export const TaskMenu: FC<TaskMenuProps> = ({ getPickedDate }) => {
             value={title}
             onChange={handleTitleChange}
             placeholder={INPUT_PLACEHOLDER}
+            data-testid="task-menu-input"
           />
           <textarea
             value={description}
             onChange={handleDescriptionChange}
             placeholder={TEXTAREA_PLACEHOLDER}
+            data-testid="task-menu-textarea"
           />
           <div className={styles.btnWrapper}>
-            <button onClick={handleAddTaskClick}>Add Task</button>
-            <button onClick={handleViewTasksClick}>View Tasks</button>
+            <button
+              onClick={handleAddTaskClick}
+              data-testid="task-menu-add-task"
+            >
+              Add Task
+            </button>
+            <button
+              onClick={handleViewTasksClick}
+              data-testid="task-menu-view-tasks"
+            >
+              View Tasks
+            </button>
           </div>
         </div>
       )}
