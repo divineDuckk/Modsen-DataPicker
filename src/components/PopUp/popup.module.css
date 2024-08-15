@@ -1,0 +1,94 @@
+.popupWrapper {
+  position: absolute;
+  width: 100%;
+  z-index: var(--popupZIndex);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: var(--popupWrapperTop);
+  left: var(--popupWrapperLeft);
+  height: 100%;
+  background-color: var(--popupWrapperBg);
+  box-sizing: border-box;
+  border-radius: var(--popupWrapperBorderRadius);
+}
+.topPanel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: var(--popupTopPanelBorderSize) solid black;
+  border-radius: var(--popupTopPanelBorderRadius);
+}
+
+.popupContainer {
+  width: var(--popupContainerWidth);
+  height: var(--popupContainerHeight);
+  background-color: var(--popupContainerBg);
+  border-radius: var(--popupContainerBorderRadius);
+  .mainContainer {
+    margin-top: var(--popupMainContainerMarginTop);
+    height: var(--popupMainContainerHeight);
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--popupMainContainerGap);
+  }
+
+  h3 {
+    font-family: Arial;
+    font-size: var(--popupH3FontSize);
+    margin: 0;
+    margin-left: var(--popupH3MarginLeft);
+  }
+  .close {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: var(--popupCloseBtnSize);
+    height: var(--popupCloseBtnSize);
+    background-color: transparent;
+    position: relative;
+    border: none;
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      top: var(--popupCloseBtnTopBeforeAfter);
+      left: var(--popupCloseBtnLeftBeforeAfter);
+      width: var(--popupCloseBtnBeforeAfter);
+      height: var(--popupCloseBtnHeightBeforeAfter);
+      transform-origin: center center;
+      border: 1px solid black;
+    }
+    &::before {
+      transform: translate(
+          var(--popupCloseBtnTranslateBeforeAfter),
+          var(--popupCloseBtnTranslateBeforeAfter)
+        )
+        rotate(var(--popupCloseBtnRotateBefore));
+    }
+    &::after {
+      transform: translate(
+          var(--popupCloseBtnTranslateBeforeAfter),
+          var(--popupCloseBtnTranslateBeforeAfter)
+        )
+        rotate(var(--popupCloseBtnRotateAfter));
+    }
+  }
+}
+::-webkit-scrollbar {
+  width: var(--srcrollWidth);
+  height: var(--srcrollHeight);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--srcrollTrackColor);
+  border-radius: var(--srcrollBorderRadius);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--srcrollThumbColor);
+  border-radius: var(--srcrollBorderRadius);
+}

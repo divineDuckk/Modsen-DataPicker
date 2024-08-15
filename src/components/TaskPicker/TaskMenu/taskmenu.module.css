@@ -1,0 +1,91 @@
+.taskMenuWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  ol {
+    padding-left: var(--olPaddingLeft);
+    padding-right: var(--olPaddingRight);
+    margin: 0;
+    li {
+      .liTitle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      margin-bottom: var(--liMarginBot);
+      border-bottom: 1px solid black;
+      button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        width: var(--popupCloseBtnSize);
+        height: var(--popupCloseBtnSize);
+        background-color: transparent;
+        position: relative;
+        border: none;
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          top: var(--popupCloseBtnTopBeforeAfter);
+          left: var(--popupCloseBtnLeftBeforeAfter);
+          width: var(--popupCloseBtnBeforeAfter);
+          height: var(--popupCloseBtnHeightBeforeAfter);
+          transform-origin: center center;
+          border: 1px solid black;
+        }
+        &::before {
+          transform: translate(
+              var(--popupCloseBtnTranslateBeforeAfter),
+              var(--popupCloseBtnTranslateBeforeAfter)
+            )
+            rotate(var(--popupCloseBtnRotateBefore));
+        }
+        &::after {
+          transform: translate(
+              var(--popupCloseBtnTranslateBeforeAfter),
+              var(--popupCloseBtnTranslateBeforeAfter)
+            )
+            rotate(var(--popupCloseBtnRotateAfter));
+        }
+      }
+    }
+  }
+}
+.taskMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+
+  .btnWrapper {
+    display: flex;
+  }
+  input {
+    height: var(--titleHeight);
+    border-radius: var(--borderRadius);
+    border: 1px solid var(--borderColor);
+    background-color: var(--bgColor);
+  }
+  textarea {
+    height: var(--descHeight);
+    border: 1px solid var(--borderColor);
+    background-color: var(--bgColor);
+
+    border-radius: var(--borderRadius);
+  }
+  button {
+    cursor: pointer;
+    padding: var(--buttonPadding) var(--buttonPaddingLeftRight);
+    border-radius: var(--borderRadius);
+    border: 1px solid var(--borderColor);
+    background-color: var(--bgColor);
+    font-weight: var(--largestFontWeight);
+    transition: var(--btnTransition);
+    &:hover {
+      background-color: var(--hoverBgColor);
+    }
+  }
+}
