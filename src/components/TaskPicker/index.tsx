@@ -9,10 +9,17 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { taskPickerService } from './service';
 import { TaskMenu } from './TaskMenu';
 
-const withCalendarTaskPicker = <P extends CalendarProps>(
-  WrappedComponents: ComponentType<P>,
+const withCalendarTaskPicker = (
+  WrappedComponents: ComponentType<CalendarProps>,
 ) => {
-  return (props: P) => {
+  return ({
+    endYear,
+    startYear,
+    weekStartDay,
+    withExtraDays,
+    withHolidays,
+    withWeekends,
+  }: CalendarProps) => {
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const handlePickDay = (date: string) => () => {
       taskPickerService.setDate(date);
@@ -25,7 +32,12 @@ const withCalendarTaskPicker = <P extends CalendarProps>(
     return (
       <ErrorBoundary>
         <WrappedComponents
-          {...props}
+          endYear={endYear}
+          startYear={startYear}
+          weekStartDay={weekStartDay}
+          withExtraDays={withExtraDays}
+          withHolidays={withHolidays}
+          withWeekends={withWeekends}
           handlePickDay={handlePickDay}
           isNeedToNotify={taskPickerService.isNeedNotify.bind(
             taskPickerService,

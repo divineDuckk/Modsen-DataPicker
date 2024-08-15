@@ -1,4 +1,4 @@
-import { convertDateFormat } from '@/utils/functions';
+import { convertDateFormat } from '@/utils/functions/convertDateFormat';
 
 describe('convertDateFormat', () => {
   it('should return undefined if dateString is undefined', () => {

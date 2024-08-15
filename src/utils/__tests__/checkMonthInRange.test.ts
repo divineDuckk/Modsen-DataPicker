@@ -1,5 +1,5 @@
 import { MAX_MONTH_PER_YEAR } from '@/constants';
-import { checkMonthInRange } from '@/utils/functions';
+import { checkMonthInRange } from '@/utils/functions/checkMonthInRange';
 
 describe('checkMonthInRange', () => {
   it('should return true for a valid month within the range', () => {

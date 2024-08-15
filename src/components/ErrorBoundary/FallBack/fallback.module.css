@@ -1,6 +1,4 @@
 .fallback {
-  --fallBackPadd: 20vh;
-
   width: 100%;
   height: auto;
   padding: var(--fallBackPadd) 0;

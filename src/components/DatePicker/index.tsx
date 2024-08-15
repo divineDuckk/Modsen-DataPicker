@@ -9,10 +9,17 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { DATE } from './constants';
 import { datePickerService } from './service';
 
-const withCalendarDatePickInput = <P extends CalendarProps>(
-  WrappedComponents: ComponentType<P>,
+const withCalendarDatePickInput = (
+  WrappedComponents: ComponentType<CalendarProps>,
 ) => {
-  return (props: P) => {
+  return ({
+    endYear,
+    startYear,
+    weekStartDay,
+    withExtraDays,
+    withHolidays,
+    withWeekends,
+  }: CalendarProps) => {
     const [dateInputValue, setDateInputValue] = useState(
       datePickerService.getDateValue(),
     );
@@ -28,8 +35,8 @@ const withCalendarDatePickInput = <P extends CalendarProps>(
           dateValue={dateInputValue}
           setInputValue={setDateInputValue}
           title={DATE}
-          startYear={props.startYear}
-          endYear={props.endYear}
+          startYear={startYear}
+          endYear={endYear}
           getServiceValue={datePickerService.getDateValue.bind(
             datePickerService,
           )}
@@ -38,7 +45,12 @@ const withCalendarDatePickInput = <P extends CalendarProps>(
           )}
         />
         <WrappedComponents
-          {...props}
+          endYear={endYear}
+          startYear={startYear}
+          weekStartDay={weekStartDay}
+          withExtraDays={withExtraDays}
+          withHolidays={withHolidays}
+          withWeekends={withWeekends}
           handlePickDay={handlePickDay}
           startDate={dateInputValue}
         />
@@ -46,4 +58,5 @@ const withCalendarDatePickInput = <P extends CalendarProps>(
     );
   };
 };
+
 export const DatePicker = withCalendarDatePickInput(Calendar);

@@ -1,8 +1,4 @@
 .taskMenuWrapper {
-  --olPaddingLeft: 30px;
-  --olPaddingRight: 10px;
-  --liMarginBot: 5px;
-
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -59,16 +55,6 @@
   }
 }
 .taskMenu {
-  --titleHeight: 27px;
-  --descHeight: 60px;
-  --buttonPadding: 5px;
-  --buttonPaddingLeftRight: 10px;
-  --borderRadius: 8px;
-  --borderColor: #bdf5bf;
-  --bgColor: #fafafa;
-  --hoverBgColor: #ecfdc8;
-  --btnTransition: 0.2s;
-
   display: flex;
   flex-direction: column;
   justify-content: space-between;

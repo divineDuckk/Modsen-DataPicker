@@ -1,6 +1,6 @@
 import { format, parse, addMonths } from 'date-fns';
 
-import { getDateOneMonthAhead } from '@/utils/functions';
+import { getDateOneMonthAhead } from '@/utils/functions/getDateOneMonthAhead';
 
 describe('getDateOneMonthAhead', () => {
   it('should return the correct date one month ahead for a given date', () => {

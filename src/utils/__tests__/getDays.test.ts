@@ -1,6 +1,6 @@
 import { format, parse, addDays, endOfMonth } from 'date-fns';
 
-import { getDays } from '@/utils/functions';
+import { getDays } from '@/utils/functions/getDays';
 
 describe('getDays', () => {
   it('should return correct days for a month starting on a Monday', () => {

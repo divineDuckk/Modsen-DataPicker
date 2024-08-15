@@ -3,19 +3,17 @@ import {
   WEEKS_START_WITH_MONDAY,
   WEEKS_START_WITH_SUNDAY,
 } from '@/constants';
-import {
-  checkYearInRange,
-  convertDateFormat,
-  dateRange,
-  getCurrentDate,
-  getDays,
-  isDateInRange,
-} from '@/utils/functions';
 import classNames from 'classnames';
 import { FC, useEffect, useState } from 'react';
 
 import { PopUp } from '@/components/PopUp';
 import { ErrorBoundary } from '@/components/ErrorBoundary';
+import { getCurrentDate } from '@/utils/functions/getCurrentDate';
+import { convertDateFormat } from '@/utils/functions/convertDateFormat';
+import { checkYearInRange } from '@/utils/functions/checkYearInRange';
+import { dateRange } from '@/utils/functions/dateRange';
+import { getDays } from '@/utils/functions/getDays';
+import { isDateInRange } from '@/utils/functions/isDateInDatesRange';
 
 import styles from './calendar.module.css';
 import { MONDAY, SUNDAY } from './constants';

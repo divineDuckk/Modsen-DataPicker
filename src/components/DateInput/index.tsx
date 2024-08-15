@@ -9,7 +9,7 @@ import {
 import classNames from 'classnames';
 import { ChangeEvent, FC, useState } from 'react';
 
-import { checkDateInYearsRange } from '@/utils/functions';
+import { checkDateInYearsRange } from '@/utils/functions/checkDateInYearsRange';
 import CalendarIcon from '@/assets/calendar.svg';
 import ClearInputIcon from '@/assets/clear.svg';
 

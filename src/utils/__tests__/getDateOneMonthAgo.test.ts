@@ -1,6 +1,6 @@
 import { format, parse, subMonths } from 'date-fns';
 
-import { getDateOneMonthAgo } from '@/utils/functions';
+import { getDateOneMonthAgo } from '@/utils/functions/getDateOneMonthAgo';
 
 describe('getDateOneMonthAgo', () => {
   it('should return the correct date one month ago for a given date', () => {

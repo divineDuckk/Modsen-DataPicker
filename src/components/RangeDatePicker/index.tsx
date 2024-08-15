@@ -9,10 +9,17 @@ import { ErrorBoundary } from '@/components/ErrorBoundary';
 import { FROM, TO } from './constants';
 import { rangeDatePickerService } from './service';
 
-const withCalendarRangeDatePicker = <P extends CalendarProps>(
-  WrappedComponents: ComponentType<P>,
+const withCalendarRangeDatePicker = (
+  WrappedComponents: ComponentType<CalendarProps>,
 ) => {
-  return (props: P) => {
+  return ({
+    endYear,
+    startYear,
+    weekStartDay,
+    withExtraDays,
+    withHolidays,
+    withWeekends,
+  }: CalendarProps) => {
     const [startDate, setStartDate] = useState(
       rangeDatePickerService.getStartDate(),
     );
@@ -29,8 +36,8 @@ const withCalendarRangeDatePicker = <P extends CalendarProps>(
           dateValue={startDate}
           setInputValue={setStartDate}
           title={FROM}
-          startYear={props.startYear}
-          endYear={props.endYear}
+          startYear={startYear}
+          endYear={endYear}
           getServiceValue={rangeDatePickerService.getStartDate.bind(
             rangeDatePickerService,
           )}
@@ -42,8 +49,8 @@ const withCalendarRangeDatePicker = <P extends CalendarProps>(
           dateValue={endDate}
           setInputValue={setEndDate}
           title={TO}
-          startYear={props.startYear}
-          endYear={props.endYear}
+          startYear={startYear}
+          endYear={endYear}
           getServiceValue={rangeDatePickerService.getEndDate.bind(
             rangeDatePickerService,
           )}
@@ -52,7 +59,12 @@ const withCalendarRangeDatePicker = <P extends CalendarProps>(
           )}
         />
         <WrappedComponents
-          {...props}
+          endYear={endYear}
+          startYear={startYear}
+          weekStartDay={weekStartDay}
+          withExtraDays={withExtraDays}
+          withHolidays={withHolidays}
+          withWeekends={withWeekends}
           handlePickDay={handlePickDay}
           startDate={startDate}
           endDate={endDate}

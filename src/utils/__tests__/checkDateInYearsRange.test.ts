@@ -1,4 +1,4 @@
-import { checkDateInYearsRange } from '@/utils/functions';
+import { checkDateInYearsRange } from '@/utils/functions/checkDateInYearsRange';
 
 describe('checkDateInYearsRange', () => {
   it('should return true for a valid date within the year range', () => {

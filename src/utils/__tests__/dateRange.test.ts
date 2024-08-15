@@ -1,4 +1,4 @@
-import { dateRange } from '@/utils/functions';
+import { dateRange } from '@/utils/functions/dateRange';
 
 describe('dateRange', () => {
   it('should return an array with a single number when start and end are the same', () => {

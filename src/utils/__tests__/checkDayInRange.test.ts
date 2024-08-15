@@ -1,4 +1,4 @@
-import { checkDayInRange } from '@/utils/functions';
+import { checkDayInRange } from '@/utils/functions/checkDayInRange';
 
 describe('checkDayInRange', () => {
   it('should return true for a valid day within the month range', () => {

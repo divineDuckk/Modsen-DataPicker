@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
-import { getDateOneMonthAgo, getDateOneMonthAhead } from '@/utils/functions';
+import { getDateOneMonthAgo } from '@/utils/functions/getDateOneMonthAgo';
+import { getDateOneMonthAhead } from '@/utils/functions/getDateOneMonthAhead';
 import Next from '@/assets/next.svg';
 import Prev from '@/assets/prev.svg';
 

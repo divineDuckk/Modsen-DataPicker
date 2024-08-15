@@ -1,4 +1,4 @@
-import { isDateInRange } from '@/utils/functions';
+import { isDateInRange } from '@/utils/functions/isDateInDatesRange';
 
 describe('isDateInRange', () => {
   it('should return true for a date within the range', () => {
